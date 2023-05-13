@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Repair">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" Nullable="false" />
+    <Property Name="AppointmentDate" Type="date" />
+    <Property Name="Problem" Type="text" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" Nullable="false" />
+    <Property Name="StudentNumber" Type="int" />
+    <Property Name="Balance" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="LastMonthWater" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="LastMonthLight" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Water" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Light" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RootPassword">
+    <Key>
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentTable">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="Telephone" Type="nchar" MaxLength="11" />
+    <Property Name="Sex" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“D:\文档\学业\大三下\WINDOWS编程\TMP\WINDOWS_PROGRAMING_CURRICULUM_DESIGN\WINDOWS_PROGRAMING_CURRICULUM_DESIGN\DATABASE2.MDF.dbo.Transfe”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="Transfe">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="Reason" Type="text" />
+  </EntityType>
+  <EntityContainer Name="Database2ModelStoreContainer">
+    <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="RootPassword" EntityType="Self.RootPassword" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="StudentTable" EntityType="Self.StudentTable" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Transfe" EntityType="Self.Transfe" store:Type="Tables" store:Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+      <DefiningQuery>SELECT 
+    [Transfe].[StudentId] AS [StudentId], 
+    [Transfe].[RoomId] AS [RoomId], 
+    [Transfe].[Reason] AS [Reason]
+    FROM [dbo].[Transfe] AS [Transfe]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

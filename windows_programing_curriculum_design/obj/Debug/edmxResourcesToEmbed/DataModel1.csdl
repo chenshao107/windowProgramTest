@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Repair">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="AppointmentDate" Type="DateTime" Precision="0" />
+    <Property Name="Problem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="StudentNumber" Type="Int32" />
+    <Property Name="Balance" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="LastMonthWater" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="LastMonthLight" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Water" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Light" Type="Decimal" Precision="8" Scale="2" />
+  </EntityType>
+  <EntityType Name="StudentTable">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="Telephone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Transfe">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Database2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Repair" EntityType="Self.Repair" />
+    <EntitySet Name="Room" EntityType="Self.Room" />
+    <EntitySet Name="StudentTable" EntityType="Self.StudentTable" />
+    <EntitySet Name="Transfe" EntityType="Self.Transfe" />
+  </EntityContainer>
+</Schema>
