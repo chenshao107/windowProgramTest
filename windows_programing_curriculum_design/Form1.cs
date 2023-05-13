@@ -89,5 +89,21 @@ namespace windows_programing_curriculum_design
                 button1_Click(sender, e);
             }
         }
+        protected override CreateParams CreateParams
+
+        {
+
+            get
+
+            {
+
+                CreateParams cp = base.CreateParams;
+
+                cp.ExStyle |= 0x02000000;
+
+                return cp;
+
+            }
+        }
     }
 }
