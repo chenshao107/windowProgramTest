@@ -23,7 +23,7 @@ namespace windows_programing_curriculum_design
             _rootOtherForm = new RootOtherForm();
             _rootOtherForm.Dock = DockStyle.Fill;
             //初始时，选中水电窗口
-            panel5.Controls.Add(_rootMaintainForm);
+            panel5.Controls.Add(_rootLightWaterForm);
 
         }
 
